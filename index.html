@@ -141,6 +141,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-background-image-和-img-标签的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/background-image-和-img-标签的区别/">background-image 和 img 标签的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/background-image-和-img-标签的区别/" class="archive-article-date">
+  	<time datetime="2018-05-08T12:50:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。<br>那么它们的区别究竟是什么呢：</p>
+<h3 id="1-占位"><a href="#1-占位" class="headerlink" title="1. 占位"></a>1. 占位</h3><p>对于background-image来说，它只是一个 CSS 的特性，虽然能展示图片，但是它并不占位，而 img 标签是占位，img 标签是一个 HTML 的元素，在 DOM 结构中是会存在它的位置。<br>因此通常像背景图片之类的，并不需要占位的，使用background-image 会更好。<br>而且很有趣的一点是，在默认情况下，如果我们打印页面，如果需要把图片也被包含着打印出来，我们需要使用 img 标签而不是 background-image。</p>
+<h3 id="2-语义化"><a href="#2-语义化" class="headerlink" title="2. 语义化"></a>2. 语义化</h3><p>我们可以给 img (含有 alt 属性) 标签渲染的图片赋予其语义，比如像错误图标之类的，这样可以给浏览器传达图像的含义。<br>在前端比较关注的 SEO 问题上，img 语义很清晰，而background-image通常就没有语义，一般用于一些背景图之类的不需要提供语义的地方。</p>
+<h3 id="3-叠加图像"><a href="#3-叠加图像" class="headerlink" title="3. 叠加图像"></a>3. 叠加图像</h3><p>如果要想处理叠加图像的话，使用 img 标签和 background-image 都可以在绝大多数浏览器上实现，但是在 IE6 上比较特殊一点，只能使用 img 标签来叠加图片。</p>
+<h3 id="4-图片动画实现"><a href="#4-图片动画实现" class="headerlink" title="4. 图片动画实现"></a>4. 图片动画实现</h3><p>使用 img 标签来处理动画时，性能比用 background-image 来实现高不少。<br>而且如果是在移动端，则它们在性能的差异上会更加明显，background-image 的动画可能会出现明显的卡顿。</p>
+<h3 id="5-加载顺序"><a href="#5-加载顺序" class="headerlink" title="5. 加载顺序"></a>5. 加载顺序</h3><p>对于 img 标签来说，需要等到图片渲染出来之后浏览器才能进行下一步页面渲染，而 background-image 的加载方式是先让浏览器去加载页面，待页面元素加载完成之后，浏览器再去加载 background-image 的图片。<br>因此如果我们的图片是优先级比较高的重要图片时，推荐使用 img 标签，如果图片是那种不是很高重要性的背景图片时，推荐使用 background-image。<br>而且对于 background-image 来说，它可以和 CSS Sprites 搭配来减少图片的网络请求次数，要知道网络通信次数越多，对网站的性能影响也是很大的，我们通过background-position 这一类的属性可以实现从一张大的Sprites图中定位到需要的图片。</p>
+<h3 id="6-可操作性"><a href="#6-可操作性" class="headerlink" title="6. 可操作性"></a>6. 可操作性</h3><p>img 标签是渲染到页面中的 DOM 元素，因此可以对它使用 DOM 操作，比如监听一个事件什么的，而 background-image 只是一个 CSS 的属性，是无法做到这些的。</p>
+<p>以上都是我目前对这两者差异的一个总结，background-image 和 img 都有自己的特性，需要结合开发场景来决定使用~，如果你也有啥想法也可以和我一起交流哦~ ：）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/08/background-image-和-img-标签的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue的style标签中的scoped踩坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -460,11 +541,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
