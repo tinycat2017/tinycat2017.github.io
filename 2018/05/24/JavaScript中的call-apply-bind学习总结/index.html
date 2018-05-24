@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Nicole&#39;s Blog</title>
+  <title>JavaScript中的call,apply,bind学习总结 | Nicole&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nicole&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的call,apply,bind学习总结">
+<meta property="og:url" content="http://yoursite.com/2018/05/24/JavaScript中的call-apply-bind学习总结/index.html">
 <meta property="og:site_name" content="Nicole&#39;s Blog">
+<meta property="og:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
+<meta property="og:updated_time" content="2018-05-24T10:10:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nicole&#39;s Blog">
+<meta name="twitter:title" content="JavaScript中的call,apply,bind学习总结">
+<meta name="twitter:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
   
     <link rel="alternative" href="/atom.xml" title="Nicole&#39;s Blog" type="application/atom+xml">
   
@@ -139,36 +144,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JavaScript中的call-apply-bind学习总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JavaScript中的call,apply,bind学习总结
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/24/JavaScript中的call-apply-bind学习总结/" class="archive-article-date">
+
+        
+        <a href="/2018/05/24/JavaScript中的call-apply-bind学习总结/" class="archive-article-date">
   	<time datetime="2018-05-24T09:53:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/24/JavaScript中的call-apply-bind学习总结/">JavaScript中的call,apply,bind学习总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于<a href="https://github.com/lin-xin/blog/issues/7" target="_blank" rel="noopener">JavaScript 中 apply 、call 的详解</a>，自己就学习并总结了一波~，正好更新一波博客😂</p>
+<h3 id="call-和-apply"><a href="#call-和-apply" class="headerlink" title="call 和 apply"></a>call 和 apply</h3><p>其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对象，也就是通过参数来确定函数中的 this 关键字的指向，this 关键字是 JavaScript 中一个很重要、很值得我们去加深学习和理解的东西，具体关于 this 的知识总结，我以前写了一个博客，感兴趣的话请参考<a href="https://tinycat2017.github.io/2018/03/26/%E6%B5%85%E6%9E%90JavaScript%E4%B8%AD%E7%9A%84this%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener">浅析JavaScript中的this关键字</a>。</p>
+<p>call 和 apply 的作用是相同的，它们的唯一区别就是对传入参数的格式要求不同。</p>
+<ul>
+<li><code>call()</code></li>
+</ul>
+<p><code>call</code> 方法在调用的时候，需要传入一个函数的上下文对象和一个参数列表</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'nicole'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">func.call(obj,&#123;<span class="attr">age</span>: <span class="string">'20'</span>&#125;,&#123;<span class="attr">id</span>:<span class="string">'1'</span>&#125;</span><br><span class="line"><span class="comment">// 运行结果是打印出 nicole 和 [&#123;age: "20"&#125;,&#123;id: '1'&#125;]</span></span><br></pre></td></tr></table></figure>
+<p>函数的上下文被指向了传入的第一个参数obj，如果我们直接调用<code>func(obj,{age:&#39;20&#39;},{id: &#39;1&#39;})</code>，那么函数的 this 则指向了 window （严格模式下为 undefined）。</p>
+<ul>
+<li><code>apply()</code></li>
+</ul>
+<p><code>apply</code>方法在调用的时候，需要传入一个函数的上下文对象和一个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'nicole'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">func.apply(obj,[&#123;<span class="attr">age</span>: <span class="string">'20'</span>&#125;,&#123;<span class="attr">id</span>: <span class="string">'1'</span>&#125;])</span><br><span class="line"><span class="comment">// 运行结果是打印出 nicole 和 [&#123;age: "20"&#125;,&#123;id: '1'&#125;]</span></span><br></pre></td></tr></table></figure>
+<p>由于<code>call</code>和<code>apply</code>方法的作用都是一样的，所以在决定究竟要用哪个的时候，我们可以直接从参数的形式来考虑，如果我们要传入的参数是数组，那我们就直接使用<code>apply</code>就好。</p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>与<code>call</code>和<code>apply</code>方法不同的是，<code>call</code>和<code>apply</code>方法在被调用时就直接执行了当前的函数，而<code>bind</code>直接返回了一个改变了函数上下文之后的新函数，这个新函数与原函数并非是同一个函数，而且与<code>call</code>类似，<code>bind</code>方法接受列表形式的参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'nicole'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func2 = func1.bind(obj,&#123;<span class="attr">age</span>: <span class="string">'20'</span>&#125;)</span><br><span class="line">func1 === func2 <span class="comment">// false</span></span><br><span class="line">func2() <span class="comment">// &#123;name: "nicole"&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们可以自己实现一个<code>bind</code>函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bindTest = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">let</span> arg = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        self.apply(context, [...arg, ...arguments]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'nicole'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func2 = func1.bindTest(obj)</span><br><span class="line">func2(&#123;<span class="attr">age</span>: <span class="number">11</span>&#125;);</span><br><span class="line"><span class="comment">// 运行结果 &#123;name: "nicole"&#125; [&#123;age: 11&#125;]</span></span><br></pre></td></tr></table></figure>
+<p>值得注意的是，<code>bind</code>方法返回的函数里面的 this 值不可以再被改变了，也就是说不能再修改函数的上下文，不管在对函数调用<code>call</code>还是<code>apply</code>，都无法再改变函数的上下文。而普通的函数则能借助<code>call</code>还是<code>apply</code>各种肆意的修改函数的上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    name: <span class="string">'nicole'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">    name: <span class="string">'neil'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> func1 = func.bind(obj1)</span><br><span class="line">func1.call(obj2)</span><br><span class="line"><span class="comment">// 运行结果是&#123;name: "nicole"&#125;，也就是说虽然调用了func1的 call方法，但是函数上下文依然是obj1</span></span><br><span class="line"></span><br><span class="line">func.call(obj1) <span class="comment">// &#123;name: "nicole"&#125;</span></span><br><span class="line">func.call(obj2) <span class="comment">// &#123;name: "neil"&#125;</span></span><br><span class="line"></span><br><span class="line">func.apply(obj1) <span class="comment">// &#123;name: "nicole"&#125;</span></span><br><span class="line">func.apply(obj2) <span class="comment">// &#123;name: "neil"&#125;</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -180,133 +225,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/24/JavaScript中的call-apply-bind学习总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/background-image-和-img-标签的区别/" class="archive-article-date">
-  	<time datetime="2018-05-08T12:50:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/08/background-image-和-img-标签的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">background-image 和 img 标签的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/background-image-和-img-标签的区别/">background-image 和 img 标签的区别</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/vue的style标签中的scoped踩坑/" class="archive-article-date">
-  	<time datetime="2018-03-30T03:34:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/vue的style标签中的scoped踩坑/">vue的style标签中的scoped踩坑</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/浅析JavaScript中的this关键字/" class="archive-article-date">
-  	<time datetime="2018-03-26T14:37:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/浅析JavaScript中的this关键字/">浅析JavaScript中的this关键字</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -329,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
