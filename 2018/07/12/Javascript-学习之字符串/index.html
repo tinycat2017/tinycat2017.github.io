@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Nicole&#39;s Blog</title>
+  <title>Javascript 学习之字符串 | Nicole&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Nicole&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="在 Javascript 中字符串(string)属于一种基本数据类型，当然也可以通过 new String() 这种方式来创建一个字符串对象。 基本包装类型在 Javascript 的语法里有一个比较奇特的一点，一个基本数据类型的变量能够像普通对象一样调用对象里的方法，比如下面这个例子 123let a = 1;a.toString() // &quot;1&quot;a.valueOf() // 1 之所以能做到">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript 学习之字符串">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/Javascript-学习之字符串/index.html">
 <meta property="og:site_name" content="Nicole&#39;s Blog">
+<meta property="og:description" content="在 Javascript 中字符串(string)属于一种基本数据类型，当然也可以通过 new String() 这种方式来创建一个字符串对象。 基本包装类型在 Javascript 的语法里有一个比较奇特的一点，一个基本数据类型的变量能够像普通对象一样调用对象里的方法，比如下面这个例子 123let a = 1;a.toString() // &quot;1&quot;a.valueOf() // 1 之所以能做到">
+<meta property="og:updated_time" content="2018-07-12T12:08:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nicole&#39;s Blog">
+<meta name="twitter:title" content="Javascript 学习之字符串">
+<meta name="twitter:description" content="在 Javascript 中字符串(string)属于一种基本数据类型，当然也可以通过 new String() 这种方式来创建一个字符串对象。 基本包装类型在 Javascript 的语法里有一个比较奇特的一点，一个基本数据类型的变量能够像普通对象一样调用对象里的方法，比如下面这个例子 123let a = 1;a.toString() // &quot;1&quot;a.valueOf() // 1 之所以能做到">
   
     <link rel="alternative" href="/atom.xml" title="Nicole&#39;s Blog" type="application/atom+xml">
   
@@ -139,36 +144,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Javascript-学习之字符串" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Javascript 学习之字符串
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/12/Javascript-学习之字符串/" class="archive-article-date">
+
+        
+        <a href="/2018/07/12/Javascript-学习之字符串/" class="archive-article-date">
   	<time datetime="2018-07-12T11:52:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/12/Javascript-学习之字符串/">Javascript 学习之字符串</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 Javascript 中字符串(string)属于一种基本数据类型，当然也可以通过 <code>new String()</code> 这种方式来创建一个字符串对象。</p>
+<h3 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h3><p>在 Javascript 的语法里有一个比较奇特的一点，一个基本数据类型的变量能够像普通对象一样调用对象里的方法，比如下面这个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">a.toString() <span class="comment">// "1"</span></span><br><span class="line">a.valueOf() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>之所以能做到这点是因为 Javascript 里的基本包装类型的存在，在执行流执行到变量 a 调用 <code>toString()</code> 时，就会在生成一个临时的 Number 类型变量，这个临时变量和普通的对象一样，拥有 <code>toString()</code> 和 <code>valueOf()</code> 这两个方法，而在执行完当前行之后，这个临时的基本包装类型变量就会被销毁，因此我们不能够对基本数据类型变量像普通的对象一样赋予其属性，就像下面这个例子👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = <span class="string">'hello'</span>;</span><br><span class="line">b.a = <span class="number">1</span> <span class="comment">//临时生成的基本包装类型变量只存在与运行这一行代码时，但这行代码执行完成，这个基本包装类型变量就会被销毁，因此 b 不会拥有 a 属性</span></span><br><span class="line">b <span class="comment">// 'hello'</span></span><br></pre></td></tr></table></figure>
+<h3 id="关于字符串操作的一些方法"><a href="#关于字符串操作的一些方法" class="headerlink" title="关于字符串操作的一些方法"></a>关于字符串操作的一些方法</h3><p>这里总结了一些常用的关于字符串的字符方法和操作的一些方法。</p>
+<h4 id="1-charAt-和-charCodeAt"><a href="#1-charAt-和-charCodeAt" class="headerlink" title="1. charAt 和 charCodeAt"></a>1. charAt 和 charCodeAt</h4><p>这两个都接受一个字符位置的参数，<code>charAt</code> 作用是返回字符串指定位置上的字符，而 <code>charCodeAt</code> 作用是返回字符串指定位置上的字符编码，例子如下👇</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.charAt(<span class="number">1</span>) <span class="comment">// "e"</span></span><br><span class="line">str.charCodeAt(<span class="number">1</span>) <span class="comment">// 101</span></span><br></pre></td></tr></table></figure>
+<p>不过 <code>charCodeAt</code> 有一个隐藏的雷点就是它无法正确识别码点大于0xFFFF的字符，也就是需要四个字节表示的字符，为了解决这个问题，现在有提出了 <code>at</code> 这个函数，但是这个函数目前是一个提案，还需等待后续的发展。</p>
+<h4 id="2-slice，substr-和-substring"><a href="#2-slice，substr-和-substring" class="headerlink" title="2. slice，substr 和 substring"></a>2. slice，substr 和 substring</h4><p>这三个方法主要的作用是类似的，主要是截取字符串的一部分。<code>slice</code> 方法接受两个参数，第一个参数指定截取开始的位置（包含截取开始位置），第二个参数指定截取结束位置（不包含截取结束位置），例子如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.slice(<span class="number">1</span>) <span class="comment">// "ello", 不指定第二个参数时，默认截取值结尾位置</span></span><br><span class="line">str.slice(<span class="number">1</span>,<span class="number">3</span>)<span class="comment">// "el"</span></span><br><span class="line">str.slice(<span class="number">-3</span>) <span class="comment">// "llo",第一个参数为负数时，将参数与字符串长度相加，根据结果来选择子字符串</span></span><br><span class="line">str.slice(<span class="number">-1</span>,<span class="number">0</span>) <span class="comment">// "" 第一个参数被转化为5-1=4，当第二个参数小于等于第一个参数的值时，结果是空字符串</span></span><br></pre></td></tr></table></figure>
+<p><code>substr</code> 方法也接受两个参数，第一个参数指定截取开始的位置（包含截取开始位置），第二个参数指定截取字符的个数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>) <span class="comment">// "ell"  从第一个参数开始，截取第二个参数指定的长度</span></span><br><span class="line">str.substr(<span class="number">-3</span>) <span class="comment">// "llo" 第一个参数为负数时，将参数与字符串长度相加，根据结果来选择子字符串</span></span><br><span class="line">str.substr(<span class="number">-3</span>,<span class="number">2</span>) <span class="comment">// "ll"</span></span><br></pre></td></tr></table></figure>
+<p><code>substring</code><br>方法也接受两个参数，第一个参数指定截取开始的位置（包含截取开始位置），第二个参数指定截取结束位置（不包含截取结束位置）,功能和 <code>slice</code> 类似，不过当第一个参数为负数的时候，<code>substring</code> 方法会将此参数重置为0，当第二个参数为负数或者0时，<code>substring</code> 截取第一个参数所表示的位置之前所有字符，例子如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.substring(<span class="number">1</span>,<span class="number">3</span>) <span class="comment">// "el"</span></span><br><span class="line">str.substring(<span class="number">1</span>) <span class="comment">// "ello"</span></span><br><span class="line">str.substring(<span class="number">-1</span>) <span class="comment">// "hello"</span></span><br><span class="line">str.substring(<span class="number">-1</span>,<span class="number">3</span>) <span class="comment">// "hel"</span></span><br><span class="line">str.substring(<span class="number">3</span>,<span class="number">-1</span>) <span class="comment">// "hel"</span></span><br><span class="line">str.substring(<span class="number">3</span>,<span class="number">0</span>) <span class="comment">// "hel"</span></span><br><span class="line">str.substring(<span class="number">3</span>,<span class="number">-6</span>) <span class="comment">// "hel"</span></span><br><span class="line">str.substring(<span class="number">-1</span>,<span class="number">-3</span>) <span class="comment">// ""</span></span><br><span class="line">str.substring(<span class="number">-1</span>,<span class="number">0</span>) <span class="comment">// ""</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-indexOf-和-lastIndexOf"><a href="#3-indexOf-和-lastIndexOf" class="headerlink" title="3. indexOf 和 lastIndexOf"></a>3. indexOf 和 lastIndexOf</h4><p><code>indexOf</code> 和 <code>lastIndexOf</code> 主要的作用是根据传入的字符串参数来检索当前字符串中是否有匹配的子字符串，如果找到匹配上的字符串，则返回该子字符串第一位字符在字符串中的位置，没有匹配上则返回-1。这两个函数都接受两个参数，<code>indexOf</code> 函数的第一个参数表示需要匹配的字符串，第二个参数表示从何处开始向后匹配字符串（若不指定则从首位开始匹配），见下例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.indexOf(<span class="string">'e'</span>, <span class="number">1</span>) <span class="comment">// 1， 表示从字符串的第2个字符开始向后匹配</span></span><br><span class="line">str.indexOf(<span class="string">'e'</span>, <span class="number">-1</span>) <span class="comment">// 1  第二个参数为负数时则从首位开始匹配</span></span><br></pre></td></tr></table></figure>
+<p><code>lastIndexOf</code> 第一个参数作用与 <code>indexOf</code> 相同，第二个参数表示从何处开始向前匹配字符串（匹配起始包含开始位置）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.lastIndexOf(<span class="string">'e'</span>, <span class="number">1</span>) <span class="comment">// 1 , 表示从字符串的第2个字符开始向前匹配</span></span><br><span class="line">str.lastIndexOf(<span class="string">'e'</span>, <span class="number">-1</span>) <span class="comment">// -1  第二个参数为负数时则无匹配，返回 -1</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-includes-startsWith-和-endsWith"><a href="#4-includes-startsWith-和-endsWith" class="headerlink" title="4. includes, startsWith 和 endsWith"></a>4. includes, startsWith 和 endsWith</h4><p>这三个函数是 ES6 推出的新方法，<code>includes</code> 的作用是判断参数字符串是否包含在某个字符串中，<code>includes</code> 也接受两个参数，第一个参数是待判断的字符串，第二个参数是开始搜索的位置，<code>includes</code> 方法会返回一个布尔值来表示当前参数字符串是否存在于原字符串中，例子如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.includes(<span class="string">'el'</span>) <span class="comment">// true</span></span><br><span class="line">str.includes(<span class="string">'el'</span>, <span class="number">1</span>) <span class="comment">// true</span></span><br><span class="line">str.includes(<span class="string">'el'</span>, <span class="number">2</span>) <span class="comment">// false</span></span><br><span class="line">str.includes(<span class="string">'el'</span>, <span class="number">-1</span>) <span class="comment">// true  第二个参数为负数则从首位开始搜索</span></span><br></pre></td></tr></table></figure>
+<p><code>startsWith</code> 表示参数字符串是否在原字符串首部，也接受两个参数，返回布尔值来表示当前参数字符串是否存在于原字符串头部中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.startsWith(<span class="string">'el'</span>) <span class="comment">// false</span></span><br><span class="line">str.startsWith(<span class="string">'el'</span>, <span class="number">1</span>) <span class="comment">// true 第二个参数表示开始搜索的位置</span></span><br><span class="line">str.startsWith(<span class="string">'hel'</span>, <span class="number">-1</span>) <span class="comment">// true 第二个参数为负数则从首位开始搜索</span></span><br></pre></td></tr></table></figure>
+<p><code>endsWith</code> 与 <code>startsWith</code> 类似，都接受两个参数，不过 <code>endsWith</code> 返回布尔值来表示当前参数字符串是否存在于原字符串尾部中，不过 <code>endsWith</code> 的第二个参数表示的是向前开始搜索的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.endsWith(<span class="string">'lo'</span>) <span class="comment">// true</span></span><br><span class="line">str.endsWith(<span class="string">'he'</span>, <span class="number">2</span>) <span class="comment">// true</span></span><br><span class="line">str.endsWith(<span class="string">'he'</span>, <span class="number">3</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-split"><a href="#5-split" class="headerlink" title="5. split"></a>5. split</h4><p><code>split</code> 函数的作用是将一个字符串进行分割成数组，并返回分割后的数组。<code>split</code> 接受一个参数，这个参数会被 <code>split</code> 函数当做分割的识别符，在函数遍历字符串的过程中，如果遇见了与参数一样的字符，那么将从这个字符所在的位置进行分割，例子如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello-world-ya'</span></span><br><span class="line">str.split(<span class="string">'-'</span>) <span class="comment">// ["hello", "world", "ya"]</span></span><br><span class="line">str.split()  <span class="comment">// ["hello-world-ya"],如果不指定参数的话，将直接返回一个包含当前字符串的数组</span></span><br><span class="line">str.split(<span class="string">''</span>) <span class="comment">// ["h", "e", "l", "l", "o", "-", "w", "o", "r", "l", "d", "-", "y", "a"] 参数是空字符串的话，将字符串所有字符都分割</span></span><br></pre></td></tr></table></figure>
+<p>其实 <code>split</code> 和数组 <code>join</code> 方法的作用正好是相反的，<code>join</code> 方法通过传入的参数来将数组里的元素拼接起来构成一个字符串。</p>
+<h4 id="6-padStart-和-padEnd"><a href="#6-padStart-和-padEnd" class="headerlink" title="6. padStart 和 padEnd"></a>6. padStart 和 padEnd</h4><p><code>padStart</code> 和 <code>padEnd</code> 是 ES2017 新引入的方法，主要的作用是在字符串的首部和尾部插入新的字符串。这两个方法都接受两个参数，第一个参数表示字符串的最小长度，第二个参数表示需要被插入的字符串，具体如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.padStart(<span class="number">7</span>,<span class="string">'ni'</span>) <span class="comment">// "nihello"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当第一个参数的值小于等于原字符串长度时，则返回原字符串</span></span><br><span class="line">str.padStart(<span class="number">5</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br><span class="line">str.padStart(<span class="number">0</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br><span class="line">str.padStart(<span class="number">-1</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.padEnd(<span class="number">7</span>,<span class="string">'ni'</span>) <span class="comment">// "helloni"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当第一个参数的值小于等于原字符串长度时，则返回原字符串</span></span><br><span class="line">str.padEnd(<span class="number">5</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br><span class="line">str.padEnd(<span class="number">0</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br><span class="line">str.padEnd(<span class="number">-1</span>,<span class="string">'ni'</span>) <span class="comment">// "hello"</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-repeat"><a href="#7-repeat" class="headerlink" title="7. repeat"></a>7. repeat</h4><p><code>repeat</code> 方法也是 ES6 新推出的一个方法，主要作用是复制原字符串，它会返回一个新的字符串，这个方法接受一个参数，这个参数表示需要将当前字符串复制的次数，例子如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello'</span></span><br><span class="line">str.repeat(<span class="number">1</span>) <span class="comment">// "hello" 参数为1，则将原字符串复制一份返回</span></span><br><span class="line">str.repeat(<span class="number">0</span>) <span class="comment">// "" 参数为0, 则返回空字符串</span></span><br><span class="line">str.repeat(<span class="number">-1</span>) <span class="comment">//RangeError: Invalid count value  参数小于等于-1时，出</span></span><br><span class="line"><span class="built_in">RangeError</span></span><br><span class="line">str.repeat(<span class="string">'a'</span>) <span class="comment">// "" 当参数为字符串时，现将字符串转为数字</span></span><br><span class="line">str.repeat(<span class="string">'2'</span>) <span class="comment">// "hellohello"</span></span><br><span class="line">str.repeat(<span class="number">3.6</span>) <span class="comment">// "hellohellohello" 当参数不为整数时则向下取整</span></span><br><span class="line">str.repeat(<span class="number">-0.9</span>) <span class="comment">// "" 先对参数取整再判断是不是负数</span></span><br><span class="line">str.repeat(<span class="literal">NaN</span>) <span class="comment">// ""</span></span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>目前就是我对 JavaScript 中字符串的运用的一些学习和理解，之后若有新的知识，会继续更新:)</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -180,209 +238,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/12/Javascript-学习之字符串/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/28/浅谈-instanceof-和-typeof-的实现原理/" class="archive-article-date">
-  	<time datetime="2018-05-28T05:28:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/28/浅谈-instanceof-和-typeof-的实现原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈 instanceof 和 typeof 的实现原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/28/浅谈-instanceof-和-typeof-的实现原理/">浅谈 instanceof 和 typeof 的实现原理</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/24/JavaScript中的call-apply-bind学习总结/" class="archive-article-date">
-  	<time datetime="2018-05-24T09:53:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/24/JavaScript中的call-apply-bind学习总结/">JavaScript中的call,apply,bind学习总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/background-image-和-img-标签的区别/" class="archive-article-date">
-  	<time datetime="2018-05-08T12:50:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/background-image-和-img-标签的区别/">background-image 和 img 标签的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/vue的style标签中的scoped踩坑/" class="archive-article-date">
-  	<time datetime="2018-03-30T03:34:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/vue的style标签中的scoped踩坑/">vue的style标签中的scoped踩坑</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/浅析JavaScript中的this关键字/" class="archive-article-date">
-  	<time datetime="2018-03-26T14:37:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/浅析JavaScript中的this关键字/">浅析JavaScript中的this关键字</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -405,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
