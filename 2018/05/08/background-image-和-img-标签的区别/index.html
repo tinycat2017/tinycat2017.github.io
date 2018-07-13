@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>background-image 和 img 标签的区别 | Nicole&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢： 1. 占位对于background-image来说，它只是一个 CSS 的特性，虽然能展示图片，但是它并不占位，而 img 标签是占位，img 标签是一个 HTML 的元素，在">
+  <meta name="description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢：">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="background-image 和 img 标签的区别">
 <meta property="og:url" content="http://yoursite.com/2018/05/08/background-image-和-img-标签的区别/index.html">
 <meta property="og:site_name" content="Nicole&#39;s Blog">
-<meta property="og:description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢： 1. 占位对于background-image来说，它只是一个 CSS 的特性，虽然能展示图片，但是它并不占位，而 img 标签是占位，img 标签是一个 HTML 的元素，在">
-<meta property="og:updated_time" content="2018-05-08T12:59:15.000Z">
+<meta property="og:description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢：">
+<meta property="og:updated_time" content="2018-07-13T05:26:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="background-image 和 img 标签的区别">
-<meta name="twitter:description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢： 1. 占位对于background-image来说，它只是一个 CSS 的特性，虽然能展示图片，但是它并不占位，而 img 标签是占位，img 标签是一个 HTML 的元素，在">
+<meta name="twitter:description" content="这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。那么它们的区别究竟是什么呢：">
   
     <link rel="alternative" href="/atom.xml" title="Nicole&#39;s Blog" type="application/atom+xml">
   
@@ -165,6 +165,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这个问题其实是一个在我们写前端页面的时候很容易遇见的问题，看起来似乎用这两种方式都能够达到我们想要展示图片的目的，但是理解这两种方式之间的区别对于我们针对不同的情况来使用这两种方法有很大的帮助。<br>那么它们的区别究竟是什么呢：</p>
+<a id="more"></a>
 <h3 id="1-占位"><a href="#1-占位" class="headerlink" title="1. 占位"></a>1. 占位</h3><p>对于background-image来说，它只是一个 CSS 的特性，虽然能展示图片，但是它并不占位，而 img 标签是占位，img 标签是一个 HTML 的元素，在 DOM 结构中是会存在它的位置。<br>因此通常像背景图片之类的，并不需要占位的，使用background-image 会更好。<br>而且很有趣的一点是，在默认情况下，如果我们打印页面，如果需要把图片也被包含着打印出来，我们需要使用 img 标签而不是 background-image。</p>
 <h3 id="2-语义化"><a href="#2-语义化" class="headerlink" title="2. 语义化"></a>2. 语义化</h3><p>我们可以给 img (含有 alt 属性) 标签渲染的图片赋予其语义，比如像错误图标之类的，这样可以给浏览器传达图像的含义。<br>在前端比较关注的 SEO 问题上，img 语义很清晰，而background-image通常就没有语义，一般用于一些背景图之类的不需要提供语义的地方。</p>
 <h3 id="3-叠加图像"><a href="#3-叠加图像" class="headerlink" title="3. 叠加图像"></a>3. 叠加图像</h3><p>如果要想处理叠加图像的话，使用 img 标签和 background-image 都可以在绝大多数浏览器上实现，但是在 IE6 上比较特殊一点，只能使用 img 标签来叠加图片。</p>
@@ -409,11 +410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">

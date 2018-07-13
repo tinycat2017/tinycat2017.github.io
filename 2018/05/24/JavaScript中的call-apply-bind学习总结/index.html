@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript中的call,apply,bind学习总结 | Nicole&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
+  <meta name="description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的call,apply,bind学习总结">
 <meta property="og:url" content="http://yoursite.com/2018/05/24/JavaScript中的call-apply-bind学习总结/index.html">
 <meta property="og:site_name" content="Nicole&#39;s Blog">
-<meta property="og:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
-<meta property="og:updated_time" content="2018-05-24T10:10:14.000Z">
+<meta property="og:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂">
+<meta property="og:updated_time" content="2018-07-13T05:26:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的call,apply,bind学习总结">
-<meta name="twitter:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂 call 和 apply其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对">
+<meta name="twitter:description" content="JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于JavaScript 中 apply 、call 的详解，自己就学习并总结了一波~，正好更新一波博客😂">
   
     <link rel="alternative" href="/atom.xml" title="Nicole&#39;s Blog" type="application/atom+xml">
   
@@ -165,8 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JavaScript 中的 call, apply, bind 这三个函数的作用和区别在各大论坛都被讨论了很多次了，但是我一直都还没来得及好好总结，这次正好看到了一个很不错的关于<a href="https://github.com/lin-xin/blog/issues/7" target="_blank" rel="noopener">JavaScript 中 apply 、call 的详解</a>，自己就学习并总结了一波~，正好更新一波博客😂</p>
-<h3 id="call-和-apply"><a href="#call-和-apply" class="headerlink" title="call 和 apply"></a>call 和 apply</h3><p>其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对象，也就是通过参数来确定函数中的 this 关键字的指向，this 关键字是 JavaScript 中一个很重要、很值得我们去加深学习和理解的东西，具体关于 this 的知识总结，我以前写了一个博客，感兴趣的话请参考<a href="https://tinycat2017.github.io/2018/03/26/%E6%B5%85%E6%9E%90JavaScript%E4%B8%AD%E7%9A%84this%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener">浅析JavaScript中的this关键字</a>。</p>
-<p>call 和 apply 的作用是相同的，它们的唯一区别就是对传入参数的格式要求不同。</p>
+<a id="more"></a>
+<h3 id="call-和-apply"><a href="#call-和-apply" class="headerlink" title="call 和 apply"></a>call 和 apply</h3><p>其实 call 和 apply 的作用很明确，就是要通过对它们传入的参数来确定函数上下文的对象，也就是通过参数来确定函数中的 this 关键字的指向，this 关键字是 JavaScript 中一个很重要、很值得我们去加深学习和理解的东西，具体关于 this 的知识总结，我以前写了一个博客，感兴趣的话请参考<a href="https://tinycat2017.github.io/2018/03/26/%E6%B5%85%E6%9E%90JavaScript%E4%B8%AD%E7%9A%84this%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank" rel="noopener">浅析JavaScript中的this关键字</a>。call 和 apply 的作用是相同的，它们的唯一区别就是对传入参数的格式要求不同。</p>
 <ul>
 <li><code>call()</code></li>
 </ul>
@@ -422,11 +422,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
