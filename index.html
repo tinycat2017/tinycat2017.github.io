@@ -164,7 +164,7 @@
         <p>ES6 推出了新的两个数据结构，分别是 <code>Set</code> 和 <code>Map</code>, 以及对应的 <code>WeakSet</code> 和 <code>WeakMap</code>。 这里主要的内容是总结一下 <code>Set</code> 和 <code>Map</code> 这两个数据结构的特点和用法。</p>
 <h3 id="1-Set"><a href="#1-Set" class="headerlink" title="1. Set"></a>1. Set</h3><p><code>Set</code> 这种数据结构有点像是没有重复元素的数组，<code>Set</code> 的构造函数接受数组或者说有 iterable 接口的数据，因此，<code>Set</code> 也可以用来去除数组的重复数据。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="string">"5"</span>]) <span class="comment">//  Set &#123;1, 2, 3, 4, 5, "5"&#125;</span></span><br></pre></td></tr></table></figure>
-<p><code>Set</code> 实现去重时，判断的依据算法是类似于 <code>===</code>，唯一不同在于 <code>Set</code> 的判断算法认为 <code>NaN</code> 与自身相等，而 <code>===</code> 任务 <code>NaN</code> 不等于自己。</p>
+<p><code>Set</code> 实现去重时，判断的依据算法是类似于 <code>===</code>，唯一不同在于 <code>Set</code> 的判断算法认为 <code>NaN</code> 与自身相等，而 <code>===</code> 认为 <code>NaN</code> 不等于自己。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="literal">NaN</span>, <span class="literal">NaN</span>]) <span class="comment">//  Set &#123;NaN&#125;</span></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2018/07/25/Javascript-学习之-Set-和-Map/#more">more >></a>
@@ -852,11 +852,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
